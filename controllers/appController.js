@@ -1,5 +1,5 @@
 const renderInit = (req,res) => {
-    res.render('main')
+    res.render('index.hbs')
 }
 module.exports = {
     renderInit
