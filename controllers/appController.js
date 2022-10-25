@@ -1,6 +1,6 @@
-const renderInit = (req,res) => {
-    res.render('index.hbs')
+const renderDashboard = (req,res) => {
+    res.render('dashboard.hbs')
 }
 module.exports = {
-    renderInit
+    renderDashboard
 }
