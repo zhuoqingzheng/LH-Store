@@ -59,8 +59,8 @@ hr{
 }
 
 .col-xl-3{
-    margin-left: 20px;
-    margin-top: 20px;
+    margin-left: 40px;
+    margin-top: 40px;
     border: 1px solid white;
-    min-width: 25rem;
+    min-width: 30rem;
 }
