@@ -42,7 +42,7 @@
 .text-center h1{
     font-family: 'caveat';
     color: rgb(178, 96, 255);
-    font-size: 60px;
+    font-size: 90px;
 }
 
 .cards-container{
@@ -62,4 +62,5 @@ hr{
     margin-left: 20px;
     margin-top: 20px;
     border: 1px solid white;
+    min-width: 25rem;
 }
