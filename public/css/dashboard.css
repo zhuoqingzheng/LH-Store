@@ -27,6 +27,8 @@
 }
 .cover-container img{
     margin-top: 4.2rem;
+    width: 100vw;
+    object-fit: cover;
 }
 
 .nav-link:hover{
@@ -55,6 +57,7 @@ hr{
 }
 .collection-img img{
     width: 100%;
+    height: auto;
     object-fit: cover;
 }
 
