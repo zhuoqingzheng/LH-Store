@@ -1,6 +1,6 @@
 const express = require ('express')
 const app = express()
-const appRouter = require('./routes/appRouter')
+// const appRouter = require('./routes/appRouter')
 const exphbs = require('express-handlebars')
 const flash = require('express-flash')
 const session = require('express-session')
