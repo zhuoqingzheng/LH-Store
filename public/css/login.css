@@ -1,0 +1,131 @@
+.login_container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: var(--color-primary);
+    border-radius: 12px;
+
+}
+
+.login_container h1{
+    color: black;
+    text-align: center;
+    padding: 0 0 18px 0;
+    border-bottom: 1px solid silver;
+
+}
+
+.login_container form{
+    padding: 0 40px;
+    box-sizing: border-box; 
+}
+
+form .text_form{
+    position: relative;
+    border-bottom: 2px solid var(--color-taupe);
+    margin: 30px 0;
+}
+
+.text_form input {
+    width: 100%;
+    padding: 0 5px;
+    height: 42px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.text_form label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: var(--color-taupe);
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.text_form span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-taupe);
+}
+
+input[type = "submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: var(--color-light);
+    border-radius: 22rem;
+    font-size: 18px;
+    color: var(--color-primary-variant);
+    cursor: pointer;
+    outline: none;
+
+}
+
+input[type = "submit"]:hover{
+    border-color: white;
+    transition: 0.5s;
+}
+
+.signUpLink{
+    margin: 30 px 0;
+    text-align: center;
+    font-size: 17px;
+    color: var(--color-black);
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.signUpLink a{
+    color: var(--color-pink);
+    text-decoration: none;
+}
+
+body {
+    font-family: "Raleway", serif;
+    background: linear-gradient(60deg, var(--color-bg), transparent, var(--color-primary));
+    color: var(--color-black);
+    line-height: 1.7;
+    font-size: 14px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ============ general styles ============ */
+
+.contrainer {
+    width: var(--container-width-lg);
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+a:hover{
+    color: var(--color-white);
+}
+
+
+.sidebar {
+    background-color: #86615c;
+}
+
+.login-title{
+    margin-top:12px;
+    font-weight: bold;
+}

@@ -3,13 +3,22 @@ const bcrypt = require('bcryptjs')
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    secret: { type: String, required: true },
+    cart: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'cart',
+        }
+    ],
 })
+// Password comparison function
+// Compares the provided password with the stored password
+// Allows us to call user.verifyPassword on any returned objects
 userSchema.methods.verifyPassword = function (password, callback) {
     bcrypt.compare(password, this.password, (err, valid) => {
         callback(err, valid)
     })
 }
+// Password salt factor
 const SALT_FACTOR = 10
 // Hash password before saving
 userSchema.pre('save', function save(next) {
@@ -28,9 +37,44 @@ userSchema.pre('save', function save(next) {
         next()
     })
 })
+const createAccount = async (req, res) => {
+    const newUser = req.body
+
+
+
+    // email already exists
+    if (await User.findOne({ username: newUser.username })) {
+        req.flash('newAccountError', 'User already exists')
+        req.flash('newAdminAccountError', 'Admin already exists')
+        return
+    }
+
+    try {
+        const newUserAccount = new User({
+            username: newUser.username,
+            password: newUser.password,
+            cart: [],
+        })
+
+        // save the new account to the DB
+        await newUserAccount.save()
+
+        return newUser
+    } catch (err) {
+        await User.deleteOne({ username: newUser.username })
+        req.flash('newAccountError', 'Invalid Data Type(s) Entered')
+        req.flash('newAdminAccountError', 'Invalid Data Type(s) Entered')
+        return
+    }
+}
 const User = mongoose.model('User', userSchema)
-module.exports = User
+module.exports = {User,
+                  createAccount,}
 
 
-    
-    
+
+
+
+
+
+

@@ -13,12 +13,9 @@ const isAuthenticated = (req, res, next) => {
 // Main page which requires login to access
 // Note use of authentication middleware here
 router.get('/', isAuthenticated, (req, res) => {
-    res.render('home', { title: 'Express', user: req.user })
+    res.render('home', { title: 'Express', user: req.user.toJSON()})
 })
-// Login page (with failure message displayed upon login failure)
-router.get('/login', (req, res) => {
-    res.render('login', { flash: req.flash('error'), title: 'Login' })
-})
+
 // Handle login
 router.post('/login',
     passport.authenticate('local', {

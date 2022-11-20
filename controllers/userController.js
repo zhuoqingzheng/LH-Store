@@ -1,7 +1,8 @@
-const User = require('../models/users')
+const {createAccount} = require('../models/user')
+const Users = require('../models/users')
 const getAllPeopleData = async (req, res, next) => {
     try {
-         const users = await User.find().lean()
+         const users = await Users.find().lean()
          return res.render('allData', { data: users })
     } catch (err) {
      return next(err)
@@ -9,7 +10,7 @@ const getAllPeopleData = async (req, res, next) => {
 }
 const getDataById = async(req, res, next) => {
     try {
-        const user = await User.findById(req.params.user_id).lean()
+        const user = await Users.findById(req.params.user_id).lean()
          if (!user) {
              // no author found in database
             return res.sendStatus(404)
@@ -22,15 +23,27 @@ const getDataById = async(req, res, next) => {
 }
 const insertData = async (req, res, next) => {
     try {
-        newAuthor = new Author( req.body )
-        await newAuthor.save()
-        return res.redirect('/people')
+        newUser = new Users( req.body )
+        await newUser.save()
+        return res.redirect('/user')
     } catch (err) {
         return next(err)
     }
 }
+
+const createAccountController = async (req, res) => {
+    let user = await createAccount(req, res)
+    if (user) {
+        return res.redirect('/')
+    } else {
+        return res.redirect('/registration')
+    }
+}
+
+
 module.exports = {
     getAllPeopleData,
     getDataById,
-    insertData
+    insertData,
+    createAccountController
 }

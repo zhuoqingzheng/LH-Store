@@ -5,20 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lewis Ham Store</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
     
 </head>
 
 <body>
 
     <main>
+        <nav class="navbar navbar-expand-md navbar-light bg-black py-4 fixed-top">
+            <div class="container-fluid head-container">
+                <a class="navbar-brand d-flex justify-content-between align-items-center ">
+                    <div class="logo">
+                        <img src="https://www.masterclass.com/course-images/attachments/ilnrs0iq099lyds0wocosepo14c9"
+                            alt="LH-LOGO">
+                    </div>
+                </a>
+
+                <div class="order-md-2 nav-btns">
+                    <a href="cart"> <button type="button" class="btn text-white">
+                            <i class="bi bi-cart2"></i>
+                        </button>
+                    </a>
+                    <button type="button" class="btn text-white">
+                        <i class="bi bi-bag-heart"></i>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav mx-5 navbar-dark">
+                        <li class="nav-item px-2 py-2">
+                            <a class="nav-link text-uppercase" href="/">home</a>
+                        </li>
+                        <li class="nav-item px-2 py-2">
+                            <a class="nav-link text-uppercase" href="#">new</a>
+                        </li>
+                        <li class="nav-item px-2 py-2">
+                            <a class="nav-link text-uppercase" href="#">about</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         {{{body}}}
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
     </main>
 
 

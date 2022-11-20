@@ -13,7 +13,8 @@ userRouter.get('/', userController.getAllPeopleData)
 userRouter.get('/:user_id', userController.getDataById)
 
 // add a new JSON object to the database
-userRouter.post('/', userController.insertData)
+// userRouter.post('/', userController.insertData)
 
+userRouter.post('/createAccount', userController.createAccountController)
 // export the router
 module.exports = userRouter

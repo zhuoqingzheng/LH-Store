@@ -1,0 +1,21 @@
+body {
+    font-family: "Raleway", serif;
+    background: linear-gradient(60deg, var(--color-bg), transparent, var(--color-primary));
+    color: var(--color-black);
+    line-height: 1.7;
+    font-size: 14px;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.thumb-post {
+    object-fit: contain; /* keep aspect ratio */
+    width: 100%;
+    max-height: 147px;
+    margin-bottom: 1rem;
+    padding-right: 10px;
+  }
+
+  .form-outline {
+    margin-left: 5rem;
+  }
