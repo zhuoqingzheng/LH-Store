@@ -1,5 +1,14 @@
-const renderDashboard = (req,res) => {
-    res.render('dashboard.hbs')
+
+const {Item,
+    getAllItems} = require('../models/item')
+
+
+const renderDashboard = async (req,res) => {
+    const allItems = await getAllItems()
+    res.render('dashboard.hbs',{
+        pagename: 'LH-Store',
+        items: allItems,
+    })
 }
 const renderLogin = (req,res) => {
     res.render('login.hbs',{
@@ -18,6 +27,8 @@ const renderRegistration = (req,res) => {
 const renderCart = (req, res) => {
     res.render('cart.hbs')
 }
+
+
 module.exports = {
     renderDashboard,
     renderLogin,
