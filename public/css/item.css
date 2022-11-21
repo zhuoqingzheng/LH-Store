@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+:root{
+    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Russo One', sans-serif;
+}   
+
+.imageContainer {
+    display: flex;
+    height: 400px;
+    object-fit: cover;
+    width: auto;
+    align-items: center;
+    padding-top: 20%;
+    
+}
+
+img{
+    height: auto;
+    border: 1px solid white;
+    width: 90%;
+}
+
+.info-container{
+    height:500px;
+    width:85%;
+
+    background-color: black;
+    padding-top: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border: 1px solid white;
+}
+
+.info-container h2{
+
+
+    font-family: 'Russo One';
+}
+
+#rating{
+  
+    font-family: 'Russo One';
+}
+
+.bi-star-fill{
+    color:blueviolet;
+    font-size: 20px;
+}

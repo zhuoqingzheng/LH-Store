@@ -19,9 +19,20 @@ const getAllItems = async () => {
     
 }
 
+const getItem = async (req) => {
+    try{
+        let id = req.params.id
+        let item = await Item.findById({_id: id}).lean()
+        return item
+    } catch(err){
+        console.log(err)
+    }
+}
+
 const Item = mongoose.model('Item', itemSchema, "items")
 
 module.exports = {
     Item,
-    getAllItems
+    getAllItems,
+    getItem
 }

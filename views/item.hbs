@@ -1,0 +1,58 @@
+<head>
+    <title>{{pagename}}</title>
+    <link rel="stylesheet" href="/css/item.css">
+    
+</head>
+<div class="py-5"></div>
+
+<div class="py-5 bg-black"></div>
+
+<div class="vh-100 bg-black">
+    <div class="container-fluid bg-black">
+        <div class="row justify-content-center">
+            <div class="col-1"></div>
+            <div class="col-lg-5 col-md-11">
+                <div class="imageContainer align-items-center">
+                    <img src="/img/{{item.tag}}.jpg">
+                </div>
+            </div>
+            <div class="py-4 d-lg-none"></div>
+            <div class="col-lg-6 col-md-8 bg-black">
+                <div class="info-container text-center">
+                    <div class="name-wrapper">
+                        <h2 class="text-white">{{item.name}}</h2>
+                    </div>
+                  
+                    <div class="py-1"></div>
+                     <div>
+                         <h2 class="fw-bold h2 text-capitalize" style="color: antiquewhite;">$ {{item.price}}</h2>
+                     </div>
+                     <div class="list-group-item py-3">
+                        <div class="pb-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <span class="text-capitalize text-secondary" id="rating">Rating: {{item.rating}} {{user.username}}</span>
+                        </div>
+                       
+                     </div>
+
+                     <div class="py-1"></div>
+                     <div>
+                        <a href="/"><div class="button btn btn-primary"> <i class="bi bi-cart2"></i> &nbsp Add To Cart </div></a>
+                        <a href="/" style="margin-left: 2%;"><div class="button btn btn-primary"> <i class="bi bi-bag-heart"></i> &nbsp Save </div></a>
+                     </div>
+
+                       
+                   
+                </div>
+            </div>
+
+        </div>
+        <div class="py-3"></div>
+    </div>
+
+
+</div>

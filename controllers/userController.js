@@ -1,5 +1,5 @@
 const {createAccount} = require('../models/user')
-const Users = require('../models/users')
+
 const getAllPeopleData = async (req, res, next) => {
     try {
          const users = await Users.find().lean()

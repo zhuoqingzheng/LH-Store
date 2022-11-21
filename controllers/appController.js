@@ -1,6 +1,7 @@
 
 const {Item,
-    getAllItems} = require('../models/item')
+    getAllItems,
+    getItem} = require('../models/item')
 
 
 const renderDashboard = async (req,res) => {
@@ -10,6 +11,17 @@ const renderDashboard = async (req,res) => {
         items: allItems,
     })
 }
+const renderItem = async (req,res) => {
+    const item = await getItem(req)
+    const title = item.name
+    const user = req.body.user
+    res.render('item.hbs',{
+        pagename:title,
+        item: item,
+        user: user,
+    })
+}
+
 const renderLogin = (req,res) => {
     res.render('login.hbs',{
         layout: '',
@@ -34,4 +46,5 @@ module.exports = {
     renderLogin,
     renderCart,
     renderRegistration,
+    renderItem
 }

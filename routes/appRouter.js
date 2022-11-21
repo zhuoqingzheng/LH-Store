@@ -15,8 +15,7 @@ appRouter.post('/login',
         successRedirect: '/cart', failureRedirect: '/login', failureFlash: true
     })
 )
-
-
+appRouter.get('/item/:id',appController.renderItem)
 appRouter.get('/',appController.renderDashboard)
 appRouter.get('/login',appController.renderLogin)
 appRouter.get('/cart', isAuthenticated,appController.renderCart)
