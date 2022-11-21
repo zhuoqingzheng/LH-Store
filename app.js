@@ -40,7 +40,7 @@ app.use(passport.authenticate('session'))
 
     
 // Load authentication router
-//app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 app.use('/',appRouter)
 app.use(authRouter)
 app.use('/user',userRouter)    

@@ -2,7 +2,9 @@
 const {Item,
     getAllItems,
     getItem} = require('../models/item')
-
+const {
+    findUser, 
+    getCartItems} = require('../models/user')
 
 const renderDashboard = async (req,res) => {
     const allItems = await getAllItems()
@@ -14,11 +16,12 @@ const renderDashboard = async (req,res) => {
 const renderItem = async (req,res) => {
     const item = await getItem(req)
     const title = item.name
-    const user = req.body.user
+    
+
     res.render('item.hbs',{
         pagename:title,
         item: item,
-        user: user,
+        
     })
 }
 
@@ -36,8 +39,12 @@ const renderRegistration = (req,res) => {
         pagename:'registration',
     })
 }
-const renderCart = (req, res) => {
-    res.render('cart.hbs')
+const renderCart = async (req, res) => {
+    let items = await getCartItems(req.user._id)
+
+    res.render('cart.hbs',{
+        items: items
+    })
 }
 
 

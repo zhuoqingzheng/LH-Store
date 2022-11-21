@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const {Item} = require('./item')
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
@@ -7,7 +8,7 @@ const userSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             unique: true, 
-            ref: 'cart',
+            ref: 'Item',
         }
     ],
 })
@@ -38,6 +39,45 @@ userSchema.pre('save', function save(next) {
         next()
     })
 })
+
+const getCartItems = async (id) =>{
+    let theUser = await User.findById({_id: id}).lean()
+    const items = []
+    try{
+        for (let i=0; i<theUser.cart.length; i++){
+            let item = await Item.findOne({_id: theUser.cart[i]}).lean()
+            items[i] = item
+        }
+        return items
+    }catch(err){
+        console.log(err)
+    }
+}
+
+
+
+const addToCart = async (req,res) =>{
+    const item_id = req.params.item_id
+    try{
+        await User.updateOne(
+            {_id: req.user._id},
+            {$push: {cart: item_id}}
+        )
+    }catch(err){
+        console.log(err)
+    }
+}
+
+const findUser = async (id) => {
+    try {
+        let theUser = await User.findById({_id: id}).lean()
+        return theUser
+    }catch(err){
+        console.log(err)
+    }
+}
+
+
 const createAccount = async (req, res) => {
     const newUser = req.body
 
@@ -70,7 +110,10 @@ const createAccount = async (req, res) => {
 }
 const User = mongoose.model('User', userSchema)
 module.exports = {User,
-                  createAccount,}
+                  addToCart,
+                  getCartItems,
+                  createAccount,
+                  findUser}
 
 
 
