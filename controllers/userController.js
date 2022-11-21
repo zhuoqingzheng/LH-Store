@@ -1,13 +1,23 @@
 const {
     createAccount,
-    addToCart} = require('../models/user')
+    addToCart,
+    deletePost} = require('../models/user')
 
 
 const addToCartController = async(req,res) => {
     try{
         await addToCart(req,res)
     }catch (err) {
-        return next(err)
+        return res.redirect('/')
+    }
+}
+
+const deletePostController = async(req,res) => {
+    try{
+        await deletePost(req,res)
+        return res.redirect('/cart')
+    }catch (err) {
+        return console.log(err)
     }
 }
 
@@ -19,21 +29,11 @@ const createAccountController = async (req, res) => {
         return res.redirect('/registration')
     }
 }
-const getCartItems = async (user) => {
-    items = await user.populate({
-        path: 'cart',
-        options: { lean: true },
-    })
 
-    friends = friends.toObject()
-
-    allFriends = friends.friends
-
-    return allFriends
-}
 
 
 module.exports = {
     createAccountController,
-    addToCartController
+    addToCartController,
+    deletePostController
 }

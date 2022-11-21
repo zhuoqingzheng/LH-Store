@@ -23,7 +23,7 @@ const userController = require('../controllers/userController')
 
 
 
-
+userRouter.get('/removeFromCart/:item_id',isAuthenticated,userController.deletePostController)
 
 userRouter.get('/addToCart/:item_id', isAuthenticated, userController.addToCartController)
 

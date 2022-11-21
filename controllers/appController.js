@@ -24,6 +24,17 @@ const renderItem = async (req,res) => {
         
     })
 }
+const renderCartItem = async (req,res) => {
+    const item = await getItem(req)
+    const title = item.name
+    
+    res.render('cartItem.hbs',{
+        pagename:title,
+        item: item,
+        
+    })
+}
+
 
 const renderLogin = (req,res) => {
     res.render('login.hbs',{
@@ -41,11 +52,14 @@ const renderRegistration = (req,res) => {
 }
 const renderCart = async (req, res) => {
     let items = await getCartItems(req.user._id)
-
+    let user = await findUser(req.user._id)
     res.render('cart.hbs',{
-        items: items
+        items: items,
+        user: user
     })
 }
+
+
 
 
 module.exports = {
@@ -53,5 +67,6 @@ module.exports = {
     renderLogin,
     renderCart,
     renderRegistration,
-    renderItem
+    renderItem,
+    renderCartItem,
 }

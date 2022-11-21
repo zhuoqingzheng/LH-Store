@@ -16,6 +16,7 @@ appRouter.post('/login',
     })
 )
 appRouter.get('/item/:id',appController.renderItem)
+appRouter.get('/cartItem/:id',isAuthenticated,appController.renderCartItem)
 appRouter.get('/',appController.renderDashboard)
 appRouter.get('/login',appController.renderLogin)
 appRouter.get('/cart', isAuthenticated,appController.renderCart)

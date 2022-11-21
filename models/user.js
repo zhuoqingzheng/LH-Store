@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
-const {Item} = require('./item')
+const { Item } = require('./item')
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     cart: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            unique: true, 
+            unique: true,
             ref: 'Item',
         }
     ],
@@ -40,39 +40,71 @@ userSchema.pre('save', function save(next) {
     })
 })
 
-const getCartItems = async (id) =>{
-    let theUser = await User.findById({_id: id}).lean()
+const getCartItems = async (id) => {
+    let theUser = await User.findById({ _id: id }).lean()
     const items = []
-    try{
-        for (let i=0; i<theUser.cart.length; i++){
-            let item = await Item.findOne({_id: theUser.cart[i]}).lean()
+    try {
+        for (let i = 0; i < theUser.cart.length; i++) {
+            let item = await Item.findOne({ _id: theUser.cart[i] }).lean()
             items[i] = item
         }
         return items
-    }catch(err){
+    } catch (err) {
+        console.log(err)
+    }
+}
+const deletePost = async (req, res) => {
+    const item_id = req.params.item_id
+    const theUser = await User.findById({ _id: req.user._id })
+    let added = false
+    try {
+        for (let i = 0; i < theUser.cart.length; i++) {
+            if (theUser.cart[i] == item_id) {
+                added = true
+                
+            }
+        }
+        if (added) {
+            await User.updateOne(
+                { _id: req.user._id },
+                { $pull: { cart: item_id } }
+            )
+        }
+
+    } catch (err) {
         console.log(err)
     }
 }
 
 
-
-const addToCart = async (req,res) =>{
+const addToCart = async (req, res) => {
     const item_id = req.params.item_id
-    try{
-        await User.updateOne(
-            {_id: req.user._id},
-            {$push: {cart: item_id}}
-        )
-    }catch(err){
+    const theUser = await User.findById({ _id: req.user._id })
+    let added = false
+    try {
+        for (let i = 0; i < theUser.cart.length; i++) {
+            if (theUser.cart[i] == item_id) {
+                added = true
+                
+            }
+        }
+        if (!added) {
+            await User.updateOne(
+                { _id: req.user._id },
+                { $push: { cart: item_id } }
+            )
+        }
+
+    } catch (err) {
         console.log(err)
     }
 }
 
 const findUser = async (id) => {
     try {
-        let theUser = await User.findById({_id: id}).lean()
+        let theUser = await User.findById({ _id: id }).lean()
         return theUser
-    }catch(err){
+    } catch (err) {
         console.log(err)
     }
 }
@@ -109,11 +141,14 @@ const createAccount = async (req, res) => {
     }
 }
 const User = mongoose.model('User', userSchema)
-module.exports = {User,
-                  addToCart,
-                  getCartItems,
-                  createAccount,
-                  findUser}
+module.exports = {
+    User,
+    addToCart,
+    getCartItems,
+    createAccount,
+    findUser,
+    deletePost,
+}
 
 
 
