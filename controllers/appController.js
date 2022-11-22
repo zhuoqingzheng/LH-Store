@@ -8,9 +8,12 @@ const {
 
 const renderDashboard = async (req,res) => {
     const allItems = await getAllItems()
+    const item = allItems[0];
+    console.log(item)
     res.render('dashboard.hbs',{
         pagename: 'LH-Store',
         items: allItems,
+        item: item,
     })
 }
 const renderItem = async (req,res) => {
